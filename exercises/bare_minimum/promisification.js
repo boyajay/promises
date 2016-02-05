@@ -9,7 +9,7 @@ var Promise = require('bluebird');
 
 // There's an easier way to create a promise returning version
 // of a function that follows exactly the node style callback pattern.
-// described in this repo. This techinque is called "promisification"
+// described in this repo. This techn9ique is called "promisification"
 // and is unique to each promise library.
 
 // All of the work done in promiseConstructor.js can be done in these three lines:
@@ -60,18 +60,18 @@ var getGitHubProfile = function (user, callback) {
  });
 };
 
-var getGitHubProfileAsync; // TODO
-
+var getGitHubProfileAsync = Promise.promisify(getGitHubProfile)
+;
 
 // (2) Asyncronous token generation
 var generateRandomToken = function (callback) {
  crypto.randomBytes(20, function(err, buffer) {
-   if (err) return callback(err, null)
+   if (err) return callback(err, null);
    callback(null, buffer.toString('hex'));
  });
 };
 
-var generateRandomTokenAsync; // TODO
+var generateRandomTokenAsync = Promise.promisify(generateRandomToken);
 
 
 // (3) Asyncronous file manipulation
@@ -83,7 +83,7 @@ var readFileAndMakeItFunny = function (filePath, callback) {
      .map(function(line) {
        return line + ' lol';
      })
-     .join('\n')
+     .join('\n');
 
    callback(funnyFile);
  });
