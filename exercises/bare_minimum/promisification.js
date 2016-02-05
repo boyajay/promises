@@ -14,8 +14,8 @@ var Promise = require('bluebird');
 
 // All of the work done in promiseConstructor.js can be done in these three lines:
 var nodeStyle = require('./callbackReview.js');
-var pluckFirstLineFromFileAsync = Promise.promisify(nodeStyle.pluckFirstLineFromFile)
-var getStatusCodeAsync = Promise.promisify(nodeStyle.getStatusCode)
+var pluckFirstLineFromFileAsync = Promise.promisify(nodeStyle.pluckFirstLineFromFile);
+var getStatusCodeAsync = Promise.promisify(nodeStyle.getStatusCode);
 
 // Assuming all functions in a library precisely follow the node style callback pattern,
 // you can even promisify an entire library!
