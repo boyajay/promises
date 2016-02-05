@@ -89,7 +89,10 @@ var readFileAndMakeItFunny = function (filePath, callback) {
  });
 };
 
-var readFileAndMakeItFunnyAsync; // TODO
+var readFileAndMakeItFunnyAsync = Promise.promisify(readFileAndMakeItFunny); // TODO
+var directory = '../test/files/file_to_read.txt';
+console.log("---------------DIRECTORY IS : " , directory);
+readFileAndMakeItFunnyAsync(directory).then(function(val){return val;});
 
 // Export these functions so we can unit test them
 // and reuse them in later code ;)
